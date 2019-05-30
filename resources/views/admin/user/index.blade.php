@@ -3,10 +3,9 @@
 @section('content')
 <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a href="">首页</a>
-        <a href="">演示</a>
-        <a>
-          <cite>导航元素</cite></a>
+        <a href="/admin">首页</a>
+        <a href="/admin/user">用户管理</a>
+
       </span>
       <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
@@ -50,7 +49,7 @@
             <td>{{$v->password}}</td>
             <td>{{$v->phone}}</td>
             <td>{{$v->email}}</td>
-            <td><img src="{{$v->person}}"></td>
+            <td><img src="{{$v->person}}" height="40px"></td>
             <td>@switch($v->status)
             	@case(0)
             	    正常使用
@@ -71,7 +70,7 @@
               <form action="/admin/user/{{$v->id}}" method='post' style='display: inline'>
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
-                                <button style="background:#fff; border:0;"><i class="layui-icon">&#xe640;</i></button>
+                                <button><i class="layui-icon">&#xe640;</i></button>
                             </form>
                 
               

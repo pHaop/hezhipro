@@ -7,8 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FormRequest;
 
 use Hash;
-
+use DB;
 use App\Model\Admin\Admin;
+use App\Model\Admin\Role;
 class AdminController extends Controller
 {
     /**
@@ -18,6 +19,7 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {   
+
         // session(['id'=>'']);
         
         $img = Admin::where('id',session('id'))->first();
@@ -49,8 +51,23 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $rs = $request->except('_token','img');
 
+
+
+        $rs = $request->except('_token','img','dopassword');
+          
+        $arr = Admin::all();
+
+        $list = Admin::where('username',$request->username)->first();
+
+        if($list)
+        {
+             echo '<script>alert("账号或密码已经存在");location.href="/admin/guanli/create"</script>'; 
+
+        }
+
+
+        
         //处理图片上传
         if($request->hasFile('img')){
 
@@ -67,14 +84,33 @@ class AdminController extends Controller
 
             $rs['img'] = '/uploads/'.$name.'.'.$suffix;
 
-        }
-        $rs['create_time'] = time();
+            $rs['create_time'] = time();
         
-        $rs['password'] = Hash::make($request->password);
+            $rs['password'] = Hash::make($request->password);
 
-        $arr = Admin::create($rs);
+      
 
-        return redirect('admin/user');
+             $arr = Admin::create($rs);
+
+        if($arr)
+        {
+            echo '<script>alert("添加成功");location.href="/admin/guanli"</script>';       
+
+        }else{
+            return back();  
+        }
+
+
+
+        }else{
+            echo '<script>alert("请选择图片");location.href="/admin/guanli/create"</script>';    
+
+        }
+
+        
+
+       
+        
 
         // dump($rs);
 
@@ -88,7 +124,21 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+
+
+        DB::table('admin_role')->where('userid',$id)->delete();
+        
+        $rs = Admin::where('id',$id)->delete();
+
+
+        if($rs)
+        {
+            echo 1;
+        }else{
+            echo 2;
+        }
+
+
     }
 
     /**
@@ -135,9 +185,9 @@ class AdminController extends Controller
         $arr = Admin::where('id',$id)->update($rs);
         if($arr)
         {
-          echo "<script>parent.location.reload();</script>";
+          echo "<script>alert('修改成功');parent.location.reload();</script>";
         }else{
-          return back()->with('error','删除失败');
+          return back();
         }
 
     }
@@ -151,9 +201,9 @@ class AdminController extends Controller
     public function destroy($id)
     {
 
-    	$rs = Admin::destroy($id);
 
-       
+
+    	$rs = Admin::destroy($id);
     	if($rs){
 
             return redirect('/admin/guanli')->with('success','删除成功');
@@ -163,11 +213,79 @@ class AdminController extends Controller
 
         }
     }
-    public function status($id)
-    {
-       echo $id;
 
+    public function userrole(Request $request)
+    {
+    
+
+        $data = Admin::find($request->id);
+
+        $rs = Role::all();
+
+        $ur = $data->user_role()->get();
+         
+        $urr = [];
+
+        foreach($ur as $k => $v){
+
+            $urr[] = $v->id;
+        }
+
+
+        
+        return view('admin.admin.role',['rs'=>$rs,'data'=>$data,'urr'=>$urr]);
+    }
+    public function douserrole(Request $request)
+    {
+        
+        $uid = $request->uid;
+
+        DB::table('admin_role')->where('userid',$uid)->delete();
+
+
+        $rs = $request->except('_token');
+        $arr=[];
+        foreach ($rs['id'] as $k => $v) {
+            $data=[];
+            $data['userid']=$uid;
+            $data['roleid']=$v;
+            $arr[]= $data;     
+
+         }
+
+        $insert = DB::table('admin_role')->insert($arr);
+
+        if($insert)
+        {
+
+             echo "<script>alert('添加成功');location.href='/admin/guanli'</script>";
+        }
+        
     }
 
+
+    public function status(Request $request)
+    {
+
+        $sta = $request->sta;
+        
+        $id = $request->id;
+        if($sta == 0)
+        {
+            $sta=1;
+        }else{
+            $sta=0;
+        }
+    
+        $arr = [];
+
+        $arr['status']=$sta;
+
+        $rs= Admin::where('id',$request->id)->update($arr);
+
+        return $rs?0:1;
+        
+    }
+    
 
 }

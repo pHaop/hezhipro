@@ -19,6 +19,10 @@ class User extends Model
     public $timestamps = false;
     
     protected $guarded = [];
+     public function user_role()
+    {
+        return $this->belongsToMany('App\Model\Admin\Role','user_role', 'userid', 'roleid');
+    }
 
 
 }

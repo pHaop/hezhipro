@@ -47,7 +47,7 @@ var _hmt = _hmt || [];
             <div class="body">
                 <form action="/home/dozhuce" method="post" class="uk-form" >
                     <div class="line">
-                        <div class="label"><i class="uk-icon-user"></i> 用户：</div>
+                        <div class="label"><i class="uk-icon-user"></i> 用户名：</div>
                         <div class="field">
                             <input type="text" class="uk-form-large uk-width-3-4" name="username" />
                         </div>

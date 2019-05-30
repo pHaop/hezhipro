@@ -33,10 +33,9 @@
     <div class="x-nav">
 
       <span class="layui-breadcrumb">
-        <a href="">首页</a>
-        <a href="">演示</a>
-        <a>
-          <cite>导航元素</cite></a>
+        <a href="/admin">首页</a>
+        <a href="/admin/guanli">管理员管理</a>
+    
       </span>
       <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
@@ -46,27 +45,28 @@
     <div class="mws-form-message info">
         <font color="green">{{session('success')}}</font>
     </div>
-    @endif
+       @endif
       <div class="layui-row">
 
         <form class="layui-form layui-col-md12 x-so" action="user" method="get">
           
-          <input type="text" name="uname"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+          <input type="text" name="uname"  placeholder="请输入管理员名" autocomplete="off" class="layui-input">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
 
         </form>
+        <style type="text/css">  #trr th{text-align: center;} </style>
       </div>
         <span class="x-right" style="line-height:40px">共有 {{$data}} 数据</span>
-      <table class="layui-table">
+      <table class="layui-table" style="text-align: center;">
         <thead>
-          <tr>
+          <tr id="trr">
             
             <th>ID</th>
             <th>用户名</th>
             <th>头像</th>
             <th>状态</th>
             <th>加入时间</th>
-            <th>操作</th>
+            <th width="100px">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -77,32 +77,35 @@
             <td>{{$v->username}}</td>
             <td><img src="{{$v->img}}" style="height: 40px"></td>
                @if($v->status==0)
-               <td><a href="#" onclick="member_stop()" title="开启">开启</a></td>
+               <td class="demo"><a href="#" onclick="member_stop()" title="开启">开启</a></td>
                @endif
                @if($v->status==1)
-               <td><a href="#" onclick="member_stop()" title="禁用">禁止</a></td>
+               <td class="demo"><a href="#" onclick="member_stop()" title="禁用">禁止</a></td>
                @endif
-              
-         
             <td>{{date('Y年m月d日 H时i分s秒',$v->create_time)}}</td>
-            <td class="td-manage">
-              <ul><li id='ull'>
+            <td class="td-manage" width="100px">
+              <ul id='ull'>
+
+              <li>
+              <a title="角色" href="/admin/userrole?id={{$v->id}}">
+                <i class="layui-icon">&#xe638;</i>
+              </a>
+              </li>
+
+              <li>
               <a title="编辑"  onclick="x_admin_show('编辑','/admin/guanli/{{$v->id}}/edit')" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
              
               </li>
               <li>
-              <form action="/admin/guanli/{{$v->id}}" method="post">
-
-              <button style="background:#fff; border:0;">
-             
+              
+              <button style="background:#fff; border:0;" class="demo_2">
+              <a title="删除" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
-            
+              </a>
               </button>
-              {{csrf_field()}}
-              {{method_field('DELETE')}}
-            </form>
+          
             </li>
             </ul>
             </td>
@@ -111,33 +114,109 @@
         </tbody>
         
       </table>
+        <link rel="stylesheet" type="text/css" href="/admins/sweetalert.css"/>
+        <script type="text/javascript" src="http://www.sucaihuo.com/Public/js/other/jquery.js"></script> 
+        <script src="/admins/sweetalert.min.js"></script>
     <div class="page">
-       {{$rs->appends(['sort' => 'votes'])->links()}}
-            </div>
 
-            
-      <style>
+        <div>
+          {{$rs->links()}}
+          
+        </div>
+      </div>
 
-
-      .layui-table{
-        text-align:center;
-      }
-      .layui-table th{
-        text-align:center;
-      }
-      #ull{
-        float: left;
-        margin-left: 10px;
-      }
-
-
-
-       
-
-      </style>
   
     </div>
+    <style type="text/css">
+    #ull li{
+      float: left;
+    }
+
+    #ull li a{
+      margin-left: 10px;
+    }
+   
+
+  </style>
     <script>
+
+
+
+
+       $('.demo').click(function(){
+
+
+
+          var th=$(this);
+
+          var id = $(this).parents("tr").find("#idd").text();
+
+          var sta = $(this).parents("tr").find(".demo").text();
+
+          if(sta =='开启')
+          {
+            sta=0;
+
+            $(this).parents("tr").find(".demo a").text('禁止');
+
+          }else{
+
+            sta=1;
+
+             $(this).parents("tr").find(".demo a").text('开启');
+
+          }
+
+          
+
+          var arr = {'id':id,'sta':sta};
+
+
+         $.get('/admin/status',arr,function(data){
+
+
+             
+
+          })
+
+       })
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        $(".demo_2").click(function(){
+          // alert('www');
+          var arr=$(this);
+          var rs = $(this).parents("tr").find("#idd").text();
+          // console.log(rs);
+
+          $.get('/admin/guanli/'+rs,function(data){
+
+            if(data==1){
+
+              arr.parents('tr').remove();
+            }
+            
+            
+          });
+         });
+
+
+
+         $(".demo_2").click(function() {
+                    swal("删除成功!", "操作成功", "success");
+                });
+
+
       layui.use('laydate', function(){
         var laydate = layui.laydate;
         
@@ -153,7 +232,7 @@
       });
 
        /*用户-停用*/
-      function member_stop(obj,id){
+      /*function member_stop(obj,id){
           layer.confirm('确认要停用吗？',function(index){
               if($(obj).attr('title')=='启用'){
 
@@ -173,7 +252,7 @@
               
           });
       }
-
+*/
       /*用户-删除*/
      
 
@@ -217,6 +296,9 @@
 
         $('.mws-form-message').hide(1200)
     },2000)  
+  </script>
+      
+    
   </script>
  
 

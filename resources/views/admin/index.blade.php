@@ -1,7 +1,12 @@
 @extends('common/admin')	
 
 @section('content')
-<blockquote class="layui-elem-quote">欢迎使用 简言博客后台模版!</blockquote>
+
+@if(session('success'))
+<blockquote class="layui-elem-quote" style="height: 30px;"><font color="red">{{session('success')}}</font></blockquote>
+@else
+<blockquote class="layui-elem-quote""><font>欢迎使用何止论坛后台</font></blockquote>
+ @endif
     <fieldset class="layui-elem-field">
               <legend>信息统计</legend>
               <div class="layui-field-box">

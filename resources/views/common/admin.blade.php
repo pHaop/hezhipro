@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JianYan-admin</title>
+    <title>后台页面</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -19,7 +19,7 @@
 <body>
     <!-- 顶部开始 -->
     <div class="container">
-        <div class="logo"><a href="/admins/index.html">JianYan-admin</a></div>
+        <div class="logo"><a href="/admin">&nbsp;&nbsp;&nbsp;何止论坛后台</a></div>
         <div class="left_open">
             <i title="展开左侧栏" class="iconfont">&#xe699;</i>
         </div>
@@ -72,7 +72,7 @@
                 </ul></li>
                      <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe726;</i>
+                    <i class="iconfont">&#xe6b8;</i>
                     <cite>用户管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -94,26 +94,85 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>专题管理</cite>
-                     <i class="iconfont nav_right">&#xe697;</i>
+                    <i class="iconfont">&#xe728;</i>
+                    <cite>角色管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a  href="/admin/topic">
+                        <a href="/admin/role">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>专题列表</cite>
+                            <cite>角色列表</cite>
                         </a>
                     </li >
+                </ul>
+                <ul class="sub-menu">
                     <li>
-                        <a href="/admin/topic/create">
+                        <a href="/admin/role/create">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加专题</cite>
+                            <cite>添加角色</cite>
                         </a>
                     </li >
-                
+                </ul>
             </li>
             <li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b1;</i>
+                    <cite>权限管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="/admin/perm">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>权限列表</cite>
+                        </a>
+                    </li >
+                </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="/admin/perm/create">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加权限</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+
+            
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b3;</i>
+                    <cite>轮播图管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="/admin/cart">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>轮播图列表</cite>
+                        </a>
+                    </li >
+                </ul>               
+            </li>
+          
+
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>订单管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="order-list.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>订单列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
                     
            
         </ul>

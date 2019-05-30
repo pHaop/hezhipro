@@ -19,7 +19,7 @@ class UserController extends Controller
        
        $username = $request->username;
 
-       $rs = User::where('username','like','%'.$username.'%')->paginate(7);
+       $rs = User::where('username','like','%'.$username.'%')->paginate(4);
 
        // dump($rs);
 

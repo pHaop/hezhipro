@@ -28,7 +28,7 @@
   
   <body>
     <div class="x-body">
-        <form class="layui-form" action="/admin/user" method="post" enctype='multipart/form-data'>
+        <form class="layui-form" action="/admin/guanli" method="post" enctype='multipart/form-data'>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
                   <span class="x-red">*</span>登录名
@@ -54,6 +54,23 @@
                   6到16个字符
               </div>
           </div>
+
+
+         <div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>确认密码
+              </label>
+              <div class="layui-input-inline">
+                  <input type="password" id="L_repass" name="dopassword" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  6到16个字符
+              </div>
+          </div>
+
+
+
           <div class="layui-form-item">
             <label for="L_pass" class="layui-form-label">
                   <span class="x-red">*</span>头像
@@ -68,18 +85,35 @@
                 <input type="radio" name="status"  value="1" title="禁用" >
               </div>
           </div>
-          
+        <link rel="stylesheet" type="text/css" href="/admins/sweetalert.css"/>
+        <script type="text/javascript" src="http://www.sucaihuo.com/Public/js/other/jquery.js"></script> 
+        <script src="/admins/sweetalert.min.js"></script>
           {{csrf_field()}}
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>
-              <button  class="layui-btn" lay-filter="add" lay-submit="">
+              <button  class="layui-btn" lay-filter="add" id="demo_2">
                   增加
               </button>
           </div>
       </form>
+   
     </div>
     <script>
+
+   $("#demo_2").click(function() {
+                    swal("删除成功!", "操作成功", "success");
+                });
+
+
+
+
+
+      
+
+
+
+
         layui.use(['form','layer'], function(){
             $ = layui.jquery;
           var form = layui.form
@@ -99,6 +133,12 @@
                 }
             }
           });
+
+
+
+
+
+
 
           //监听提交
           form.on('submit(add)', function(data){

@@ -19,4 +19,9 @@ class Admin extends Model
     public $timestamps = false;
     
     protected $guarded = [];
+
+    public function user_role()
+    {
+        return $this->belongsToMany('App\Model\Admin\Role','admin_role', 'userid', 'roleid');
+    }
 }

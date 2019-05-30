@@ -48,7 +48,7 @@ var _hmt = _hmt || [];
             <div class="body">
                 <form action="/home/dologin" method="post" class="uk-form">
                     <div class="line">
-                        <div class="label"><i class="uk-icon-user"></i> 用户：</div>
+                        <div class="label"><i class="uk-icon-user"></i> 用户名：</div>
                         <div class="field">
                             <input type="text" class="uk-form-large uk-width-3-4" name="username" />
                         </div>
@@ -76,7 +76,7 @@ var _hmt = _hmt || [];
                         </div>
                     </div>
                  @if(session('error'))
-                <div class="mws-form-message warning" style="margin-top:20px;margin-left:30px">
+                <div class="mws-form-message warning" style="margin-top:20px;">
                     <li><font color="red">{{session('error')}}</font></li>
                 </div>
                 @endif

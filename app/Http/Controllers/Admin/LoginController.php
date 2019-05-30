@@ -38,6 +38,14 @@ class LoginController extends Controller
     	 	return back()->with('error','用户名或密码错误');
     	 }
 
+         if($rs->status != 0)
+         {
+
+          return back()->with('error','账户已冻结');
+
+         }
+
+
          if($request->code!=session('code'))
          {
          	return back()->with('error','验证码错误');
@@ -84,10 +92,13 @@ class LoginController extends Controller
 
     }
 
+    
+
      public function dopass(Request $request)
     {
         
         $rs = Admin::where('id',session('id'))->first();
+
 
         if(!Hash::check($request->password,$rs->password))
         {
@@ -109,12 +120,8 @@ class LoginController extends Controller
 
         if($result)
         {
-           
-           
-           // echo "<script>var index=parent.layer.getFrameIndex(window.name);
-           //          parent.layer.close(index);</script>";
-           //  sleep(1);
-           echo "<script>parent.location.reload();</script>";
+         
+          echo "<script>alert('修改成功');parent.location.reload();</script>";
 
         }else{
 
@@ -129,15 +136,11 @@ class LoginController extends Controller
     }
 
     public function out()
-    {   
-        dump(session('code'));
+    {  
         session(['id'=>'']);
         
         return redirect('/admin/login');
     }
     
-    
-
-
 }
 

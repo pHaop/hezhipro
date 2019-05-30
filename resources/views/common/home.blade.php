@@ -9,34 +9,14 @@
     <meta name="description" content="何止-在这里你可以阅读、分享、交流、还可以任性的创作,一篇短文、一张照片、一首诗、一幅画……遇知音、寻挚友、与懂你的人一起同行，成为热爱生活的……">
     <meta name="viewport" content="width=device-width, minimum-scale=0.5, maximum-scale=5, user-scalable=no">
     <meta name="renderer" content="webkit">
-
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="stylesheet" href="/css/app.css">
-    <style>
-        .page-contai    ner .pages a:hover {
-            color: #EA6F5A;
-            border-color: #EA6F5A;
-        }
-        .page-container {
-            text-align: center;
-        }
-        .page-container li{
-            display:inline;
-            list-style: none;
-            text-align: center;
-            margin-left:30px;
-        }
-    </style>
-    <script src="http://heezhi.c.ecuster.com/assets/main/default/basic.js?v=a55df311"></script>
-    <script src="/homes/static/js/basic.js"></script>
-    <script type="text/javascript" src="/js/app.js"></script>
-    <script type="text/javascript" src="/homes/static/js/jquery.min.js"></script>
-    <script src="/homes/static/js/home.js"></script>
     <script src="/homes/static/js/init.js"></script>
+    <script src="/js/jquery.js"></script>
     <title>何止 - 让文学回归阅读的本味!</title>
             <link rel="stylesheet" href="/homes/static/css/ui.css"/>
         <link rel="stylesheet" href="/homes/static/css/style.css"/>
                     <script>
+
 var _hmt = _hmt || [];
 (function() {
     var hm = document.createElement("script");
@@ -53,31 +33,43 @@ var _hmt = _hmt || [];
     <a href="javascript:;" onclick="$(this).parent().fadeOut();" class="close">[关闭]</a>
 </div>
 <![endif]-->
+
+
+
+   @php
+    $data = DB::table('user')->where('id',session('uid'))->first()
+    @endphp
+   
     <header>
         <div class="main-container">
             <nav class="uk-navbar">
-
                 <ul class="uk-navbar-nav uk-navbar-nav-right">
-@if(session('uid'))
+    @if(session('uid'))
+
+
     <li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
         <a class="username" href="">
-            <img class="avatar" src="{{$rs['person']}}">
-            <span>{{$rs['username']}}</span>
+            <img class="avatar" src="{{$data->person}}">
+            <span>{{$data->username}}</span>
             <i class="uk-icon-caret-down"></i>
         </a>
+
         <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 50px; left: 0px;">
             <ul class="uk-nav uk-nav-navbar">
-                <li><a href="/member/101292"><i class="uk-icon-user"></i> 我的中心</a></li>
-                <li><a href="/member/profile"><i class="uk-icon-list-alt"></i> 我的资料</a></li>
-                <li><a data-confirm="确定退出?" data-href="/logout"><i class="uk-icon-sign-out"></i> 退出</a></li>
+                <li><a href="/home/user"><i class="uk-icon-user"></i> 我的中心</a></li>
+                <li><a href="/home/userinfo"><i class="uk-icon-list-alt"></i> 我的资料</a></li>
+
+                <li><a href="/home/loginout"><i class="uk-icon-sign-out"></i> 退出</a></li>
             </ul>
         </div>
 
     </li>
 
-@else
+    @else
+
     <li><a href="/home/zhuce">注册</a></li>
     <li><a href="/home/login">登录</a></li>
+    
     @endif
     </ul>
 
@@ -87,9 +79,9 @@ var _hmt = _hmt || [];
     <!--  -->
     <ul class="uk-navbar-nav">
         <li  class="uk-active" ><a href="/">发现</a></li>
-        <li ><a href="/home/topic/">专题</a></li>
+        <li ><a href="/home/topic">专题</a></li>
         <li ><a href="/home/follow">关注</a></li>
-        @if(session('uid'))
+        @if(session('id'))
             <li ><a href="/home/aritle">写作模式</a></li>
         @endif
         <li>
@@ -102,26 +94,9 @@ var _hmt = _hmt || [];
     </nav>
     </div>
     </header>
+
+
 @section('content')
 
 
 @show
-<footer>
-    <div class="main-container">
-        <div class="articles">
-            <a href="/article/1">使用协议</a>
-            <a href="/article/2">关于何止</a>
-            <a href="/article/4">版权说明</a>
-            <a href="/article/5">隐私保护</a>
-            <a href="/article/8">联系我们</a>
-        </div>
-        <div class="copyright">
-            <a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备16023748号-8</a>
-            &copy;
-            heezhi.com【何止版权所有】
-        </div>
-    </div>
-</footer>
-</body>
-<script src="/homes/static/js/home.js"></script>
-</html>

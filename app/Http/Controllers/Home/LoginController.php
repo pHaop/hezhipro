@@ -28,9 +28,12 @@ class LoginController extends Controller
 
  public function dologin(Request $request)
  {
+
+
+
  		$this->validate($request, [
-            'username' => 'required|regex:/^\w{5,12}$/',
-            'password' => 'required|regex:/^\S{8,16}$/',
+            'username' => 'required|regex:/^\w{3,12}$/',
+            'password' => 'required|regex:/^\S{6,16}$/',
         ],[
             'username.required' => '用户名不能为空',
             'username.regex' => '用户名格式不正确',
@@ -55,18 +58,16 @@ class LoginController extends Controller
       {
       		return back()->with('error','验证码错误');
       }
+
+
+
       session(['uid'=>$rs->id]);
+  
    	  return redirect('/');
 
  }
 
- public function logout(){
-        Session::forget('uid');
-
-         return redirect('/');
-
-    }
-    public function code()
+ public function code()
     {
 
     	$phrase = new PhraseBuilder;
@@ -91,8 +92,6 @@ class LoginController extends Controller
 	    $builder->output();
 
     }
-
-
 
 
  public function zhuce()
@@ -132,7 +131,7 @@ public function dozhuce(Request $request)
        $rs = $request->except('_token','yzm','password');
        $rs['person']= '/uploads/user.jpg';
        $rs['password']= Hash::make($request->password);
- 	   $rs['status'] ='0';
+ 	     $rs['status'] ='0';
        $rs['addtime'] = date('Y-m-d H:i:s');
        
        $data = User::create($rs);
@@ -144,6 +143,8 @@ public function dozhuce(Request $request)
        }
    
  }
+
+
  public function yzm(Request $request)
  {
 
@@ -167,6 +168,15 @@ public function dozhuce(Request $request)
         //70字内（含70字）计一条，超过70字，按67字/条计费，超过长度短信平台将会自动分割为多条发送。分割后的多条短信将按照具体占用条数计费。
         echo $ucpass->SendSms($appid,$templateid,$param,$mobile,$uid);
         session(['yzm'=>$param]);
+
+ }
+
+ public function loginout()
+ {
+
+        session(['uid'=>'']);
+      
+        return redirect('/home/login');
 
  }
 
