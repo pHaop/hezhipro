@@ -12,7 +12,7 @@ use DB;
 
 use App\Model\Home\Article;
 use App\Model\Admin\Topic;
-use App\Model\Admin\Links;
+
 
 class IndexController extends Controller
 {
@@ -27,7 +27,7 @@ class IndexController extends Controller
         $res = Article::orderBy('addtime','desc')->get();
         
         $rep = Topic::get();
-        $ren = Links::get();
+
       
    
         foreach($res as $k=>$v){
@@ -41,7 +41,7 @@ class IndexController extends Controller
         
        
        
-
+           
 
     	$rs = Cart::orderBy('grouy','ASC')->get();
 
@@ -61,13 +61,11 @@ class IndexController extends Controller
     	    $arr[]=$data;
     	}   
 
-
     	$ids = array_column($arr, 'id');
 
     	return view('home.index',['rs'=>$rs,'user'=>$user,'ids'=>$ids,'rev'=>$rev,
             'res'=>$res,
-            'rep'=>$rep,'rus'=>$rus,
-            'ren'=>$ren]);
+            'rep'=>$rep,'rus'=>$rus]);
     	
     }
 }

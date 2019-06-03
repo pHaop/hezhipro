@@ -138,14 +138,14 @@ class RoleController extends Controller
         $arr = Role::find($request->id);
 
         $ur = $arr->role_perm()->get();
-
+  
         $urr = [];
 
         foreach($ur as $k => $v){
 
             $urr[] = $v->id;
         }
-
+ 
         return view('admin.role.perm',['rs'=>$rs,'arr'=>$arr,'urr'=>$urr]);
         // dump($request->id);
     }

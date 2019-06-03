@@ -8,7 +8,6 @@ use DB;
 use App\Model\Admin\user;
 use App\Model\Admin\topic;
 use App\Model\Home\Article;
-use App\Model\Admin\Links;
 class TopicController extends Controller
 {
     /**
@@ -23,11 +22,10 @@ class TopicController extends Controller
         $rs = User::find(session('uid'));
         $res = Topic::paginate(7);
         $ref = Topic::orderBy('addtime','desc')->limit(11)->get();
-        $ren = Links::get();
+
         return view('home.topic.index',['rs'=>$rs,
                                               'res'=>$res,
                                               'ref'=>$ref,
-                                              'ren'=>$ren
                                               ]);
 
     }
@@ -41,8 +39,7 @@ class TopicController extends Controller
     {
         //
         $rs = User::find(session('uid'));
-        $ren = Links::get();
-        return view('home.topic.create',['rs'=>$rs,'ren'=>$ren]);
+        return view('home.topic.create',['rs'=>$rs]);
     }
 
     /**
@@ -91,13 +88,12 @@ class TopicController extends Controller
         $rs = User::find(session('uid'));
         $res = Topic::find($id);
         $rep = User::find($res['uid']);
-        $rea = Article::where('aid','=',$id)->get();
-        $ren = Links::get();
+        $rea = Article::where('aid','=',$id)->orderBy('addtime','desc')->get();
+
         return view('home.topic.show',['rs'=>$rs,
                     'res'=>$res,
                     'rep'=>$rep,
-                    'rea'=>$rea,
-                    'ren'=>$ren]);
+                    'rea'=>$rea]);
     }
 
     public function edit()

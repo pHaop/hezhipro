@@ -118,12 +118,6 @@ var _hmt = _hmt || [];
                                     关注
                                 </a>
 
-                                
-                                <a href="/homes//member/101286/followers">
-                                    <span>0</span>
-                                    <br>
-                                    粉丝
-                                </a>
                              
                                 <a class="info" href="/homes/javascript:;">
                                     <span>0</span>
@@ -170,7 +164,7 @@ var _hmt = _hmt || [];
                         </h2>
                     </div>
                     <div class="body">
-                                                    <p class="uk-text-muted">{{$rs->sign}}</p>
+                    <p class="uk-text-muted">{{$rs->sign}}</p>
                                             </div>
                 </div>
 
@@ -178,14 +172,11 @@ var _hmt = _hmt || [];
 
                 <div class="pb pb-member-right-menu">
                     <div class="body">
-                        <a href="/homes//member/101286/like_notes" class="item">
+                        <a href="/home/likenote?id={{$rs->id}}" class="item">
                             <i class="uk-icon-heart-o"></i>
                             喜欢的文章
                         </a>
-                        <a href="/homes//member/101286/followed_topics" class="item">
-                            <i class="uk-icon-list"></i>
-                            关注的专题
-                        </a>
+                      
                     </div>
                 </div>
 

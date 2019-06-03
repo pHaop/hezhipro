@@ -18,11 +18,12 @@ class TopicController extends Controller
 
         $rs = Topic::where('name','like','%'.$name.'%')->paginate(5);
 
-        // dump($rs)
+        // dump($rs);
+
         $data = Topic::count();
         return view('admin.topic.index',
             ['rs'=>$rs,
-                'title'=>'后台专题的首页',
+                'title'=>'专题的修改页面',
                 'data'=>$data,
                 'name'=>$name
             ]);
@@ -94,7 +95,7 @@ class TopicController extends Controller
     {
         
         $rs = Topic::find($id);
-        return view('admin.topic.edit',['title'=>'专题的修改页面',
+        return view('admin.topic.edit',['title'=>'用户的修改页面',
                                          'rs'=>$rs]);
     }
 

@@ -168,7 +168,7 @@
                     <li>
                         <a href="/admin/topic">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>专题列表</cite>
+                            <cite>订单列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -177,29 +177,6 @@
                         <a href="/admin/topic/create">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>添加专题</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>友情链接管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="/admin/links">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>友情链接列表</cite>
-                        </a>
-                    </li >
-                </ul>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="/admin/links/create">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加友情链接</cite>
                         </a>
                     </li >
                 </ul>

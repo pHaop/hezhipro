@@ -24,11 +24,20 @@
                                 </div>
                                     @else
                             <div class="action">
-                                <a class="msg" href="/home/aritle">
+                                <a class="msg" data-dialog-request="/topic/note_contribute/4">
                                     <i class="uk-icon-paper-plane"></i>
                                     投稿
                                 </a>
-
+                                <div class="topic-follow-box" data-topic-id="4">
+                                    <a href="javascript:;" class="follow  show ">
+                                        <i class="uk-icon-plus"></i>
+                                        关注
+                                    </a>
+                                    <a href="javascript:;" class="unfollow ">
+                                        <i class="uk-icon-minus"></i>
+                                        取消关注
+                                    </a>
+                                </div>
                             </div>
                                     @endif
                             <div class="name">

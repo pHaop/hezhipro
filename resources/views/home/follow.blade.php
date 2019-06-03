@@ -853,5 +853,49 @@
 
 
 
+<footer>
+    <div class="main-container">
+        <div class="articles">
+            <a href="/article/1">使用协议</a>
+            <a href="/article/2">关于何止</a>
+            <a href="/article/4">版权说明</a>
+            <a href="/article/5">隐私保护</a>
+            <a href="/article/8">联系我们</a>
+        </div>
+        <div class="copyright">
+            <a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备16023748号-8</a>
+            &copy;
+            heezhi.com【何止版权所有】
+        </div>
+    </div>
+</footer>
 
+<div class="pb-footer-toolbox">
+    <a href="javascript:;" class="top" data-uk-smooth-scroll="{offset:0}" data-uk-tooltip="{pos:'left'}" title="返回顶部">
+        <i class="uk-icon-arrow-up"></i>
+    </a>
+</div>
+
+<script src="http://heezhi.c.ecuster.com/assets/main/default/basic.js?v=a55df311"></script>
+
+<script>
+    (function () {
+        var currentPage = 1;
+        var load = function (page) {
+            currentPage = page || currentPage;
+            $.post('?',{page:page},function (res){
+                window.api.base.defaultFormCallback(res,{success:function(res){
+                        $('#list').html(res.data.html);
+                        pager.render(res.data.total,res.data.pageSize,res.data.page);
+                        $("[datetime]").timeago();
+                    }});
+            });
+        };
+        var pager = new window.api.pager('.page-container',load,{jump:false,total:false});
+        pager.render(418,20,1);
+        window.__refresh = load;
+    })();
+</script>
+</body>
+</html>
     @stop

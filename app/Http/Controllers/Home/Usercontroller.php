@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Model\Home\User;
 use DB;
 use Session;
-use App\Model\Admin\Links;
 class Usercontroller extends Controller
 {
 
@@ -21,8 +20,9 @@ class Usercontroller extends Controller
     	$rs = User::where('id',session('uid'))->first();
       
       $rs['data']=$data;
-      $ren = Links::get();
-    	return view('home.user.index',['rs'=>$rs,"data"=>$data,'ren'=>$ren]);
+
+
+    	return view('home.user.index',['rs'=>$rs,"data"=>$data]);
 
 
       
@@ -37,8 +37,8 @@ class Usercontroller extends Controller
 
 
     	$rs = User::where('id',session('uid'))->first();
-        $ren = Links::get();
-    	return view('home.user.userinfo',['rs'=>$rs,'ren'=>$ren]);
+
+    	return view('home.user.userinfo',['rs'=>$rs]);
     }
 
 

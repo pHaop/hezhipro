@@ -12,18 +12,13 @@
                     <div class="body">
 
                         <div class="box">
-
-                            
-
                             <div class="avatar">
-                                <a href="/homes//member/101286">
+                                <a href="javascript:;">
                                     <img src="{{$rs->person}}" />
                                 </a>
                             </div>
-
-
                              <div class="name">
-                                <a href="/homes//member/101286">
+                                <a href="javascript:;">
                                     {{$rs->username}}
                                 </a>
                               </div>
@@ -33,79 +28,20 @@
                                     <br>
                                     关注
                                 </a>
-                             
+                    
                                 <a class="info" href="/homes/javascript:;">
                                     <span>0</span>
                                     <br>
                                     文章
                                 </a>
-
                                 
-                                <div style="display: none;" id="tid">{{$id}}</div>
-                                  @if(in_array($id,$ids))
-                                  <a href="javascript:;" class="unfollow show" target='_blank'><i class="uk-icon-plus"></i>取消关注</a> 
-                                  @else
-                                  <a href="javascript:;" class="follow show" target='_blank'><i class="uk-icon-plus"></i>关注</a> 
-                                  @endif
-                                  <div style="display: none;" id="uid">{{session('uid')}}</div>
-                                                           
                             </div>
-                              
 
                         </div>
 
                     </div>
 
                 </div>
-
-
-
-   
-            <script type="text/javascript" src="/js/jquery.js"></script>
-            <script type="text/javascript">
-
-
-                    $("a[target='_blank']").click(function(){
-                     
-                      
-
-                       var tid = $(this).prev('#tid').text();
-                       var uid = $(this).next('#uid').text();
-
-                       var arr = {'uid':uid,'tid':tid};
-                       if($(this).attr('class')=='follow show')
-                       {
-
-                        $.get('/home/gz',arr,function(data){
-
-                          console.log(data);
-
-                        })
-
-                        $(this).attr('class','unfollow show');
-                        $(this).html('<i class="uk-icon-minus"></i>取消关注');
-
-                       }else{
-
-                        $.get('/home/dogz',arr,function(data){
-
-                          console.log(data);
-                          
-                        })
-
-                        $(this).attr('class','follow show');
-                        $(this).html('<i class="uk-icon-plus"></i>关注');
-
-                       }
-                      
-                    });
-
-
-
-        </script>
-
-
-
 
 
 
@@ -124,26 +60,36 @@
 
 
 
-@foreach($res as $va)
-  <div class="item">
+
+            @foreach($arr as $k=>$v)
+                
+
+            @php 
+
+            $like = DB::table('article')->where('id',$v['id'])->first();
+
+            $user = DB::table('user')->where('id',$like->uid)->first();
+          
+            @endphp
+         <div class="item">
             <div class="author">
-                <a href="/member/101170" class="avatar">
-                    <img src="{{$rs->person}}">
+                <a href="/home/thisuser?id={{$user->id}}" class="avatar">
+                    <img src="{{$user->person}}">
                 </a>
-                <a class="name" href="/member/101170">
-                    {{$rs->username}}
+                <a class="name" href="/home/thisuser?id={{$user->id}}">
+                 {{$user->username}}
                 </a>
                 <span class="time">
-                    <time datetime="{{$va['addtime']}}"></time>
+                    <time datetime="{{$like->addtime}}"></time>
                 </span>
             </div>
                             
-            <a href="/home/aritle/{{$va['id']}}" class="title uk-text-truncate">
-                {{$va['title']}}
+            <a href="/home/aritle/{{$like->id}}" class="title uk-text-truncate">
+                {{$like->title}}
             </a>
             <div class="summary">
                 <div class="text">
-                     @php echo  htmlspecialchars_decode($va['content']);@endphp
+            @php echo  htmlspecialchars_decode($like->content);@endphp
                 </div>
             </div>
             <div class="stat">
@@ -160,7 +106,7 @@
                 </a>
             </div>
       </div>
-@endforeach
+    @endforeach
             <div class="empty">
         没有记录
     </div>
@@ -191,11 +137,11 @@
 
                 <div class="pb pb-member-right-menu">
                     <div class="body">
-                        <a href="/home/likenote?id={{$rs->id}}" class="item">
+                        <a href="/homes//member/101286/like_notes" class="item">
                             <i class="uk-icon-heart-o"></i>
                             喜欢的文章
                         </a>
-                    
+                      
                     </div>
                 </div>
 

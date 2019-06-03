@@ -20,7 +20,7 @@
 
 
 Route::group([],function(){
-
+	
     Route::resource('/home/aritle/', 'Home\WriteController');
     Route::get('/home/aritle/{id}','Home\WriteController@sbkj');
     Route::post('/home/aritle/ajax','Home\WriteajaxController@req');
@@ -29,9 +29,6 @@ Route::group([],function(){
     Route::get('/home/topic/{id}','Home\TopicController@sbkj');
     Route::get('/home/follow','Home\FollowController@index');
     Route::get('/logout','Home\LoginController@logout');
-    Route::post('/home/comment','Home\CommentController@index');
-    Route::post('/home/reply','Home\ReplyController@index');
-
 
 });
 
@@ -153,8 +150,6 @@ Route::group(['middleware'=>'login'], function(){
    	Route::resource('/admin/friend','Admin\FriendController');
    	//专题管理
    	Route::resource('/admin/topic','Admin\TopicController');
-    //友情链接管理
-    Route::resource('/admin/links','Admin\LinksController');
 
 });
 
@@ -205,8 +200,13 @@ Route::group(['middleware'=>'Home'],function(){
 	Route::get('/home/dogz','Home\ThisController@dogz');
 	//关注页面
 	Route::get('/home/mygz','Home\ThisController@mygz');
-	
-	
+	//喜欢文章
+	Route::get('/home/like','Home\LikewriteController@like');
+	//取消喜欢
+	Route::get('/home/nolike','Home\LikewriteController@nolike');
+	//用户喜欢页面
+	Route::get('/home/likenote','Home\LikewriteController@likenote');
+
 
 });
 

@@ -7,21 +7,40 @@ use App\Http\Controllers\Controller;
 
 use DB;
 use App\Model\Home\User;
-use App\Model\Admin\Links;
+
+use App\Model\Home\Article;
 class ThisController extends Controller
 {
     
     public function index(Request $request)
 	{
 
-
-
 		$id = $request->id;
 
 		$rs = User::where('id',$id)->first();
-        $ren = Links::get();
 
-    	return view('home.thisuser.index',['rs'=>$rs,'ren'=>$ren]);
+        $res = Article::where('uid',$id)->orderBy('addtime','desc')->get();
+
+        
+        $data = DB::table('thisuser')->where('uid',session('uid'))->get();
+
+        $arr = [];
+
+        foreach($data as $v)
+        {   
+            $data = [];
+            
+            $data['id']=$v->tid;
+
+            $arr[]=$data;
+        }   
+
+        $ids = array_column($arr, 'id');
+
+    	return view('home.thisuser.index',['rs'=>$rs,'res'=>$res,'id'=>$id,'ids'=>$ids]);
+
+
+
     }
 
 
@@ -82,9 +101,9 @@ class ThisController extends Controller
     	$data = DB::table('thisuser')->where('uid',session('uid'))->count();
   		
   		$rs['data']=$data;
+  		
 
-        $ren = Links::get();
-    	return view('home.thisuser.mygz',['rs'=>$rs,'arr'=>$arr,'ren'=>$ren]);
+    	return view('home.thisuser.mygz',['rs'=>$rs,'arr'=>$arr]);
 
 
     }

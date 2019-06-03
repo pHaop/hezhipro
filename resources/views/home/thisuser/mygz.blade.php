@@ -31,11 +31,7 @@
                                     <br>
                                     关注
                                 </a>
-                                <a href="/member/101286/followers">
-                                    <span>0</span>
-                                    <br>
-                                    粉丝
-                                </a>
+                           
                            
                                 <a class="info" href="javascript:;">
                                     <span>0</span>
@@ -64,9 +60,7 @@
     <div class="pb-member-list">
         <div class="body" id="list">
 
-
-
-@if($arr)
+            @if($arr)
             @foreach($arr as $k=>$v)
                 
 
@@ -145,14 +139,11 @@
 
                 <div class="pb pb-member-right-menu">
                     <div class="body">
-                        <a href="/member/101286/like_notes" class="item">
+                        <a href="/home/likenote?id={{$user->id}}" class="item">
                             <i class="uk-icon-heart-o"></i>
                             喜欢的文章
                         </a>
-                        <a href="/member/101286/followed_topics" class="item">
-                            <i class="uk-icon-list"></i>
-                            关注的专题
-                        </a>
+                    
                     </div>
                 </div>
 
@@ -167,4 +158,44 @@
     </div>
 
 
+    <footer>
+        <div class="main-container">
+            <div class="articles">
+                                    <a href="/article/1">使用协议</a>
+                                    <a href="/article/2">关于何止</a>
+                                    <a href="/article/4">版权说明</a>
+                                    <a href="/article/5">隐私保护</a>
+                                    <a href="/article/8">联系我们</a>
+                            </div>
+            <div class="copyright">
+                <a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备16023748号-8</a>
+                &copy;
+                heezhi.com【何止版权所有】
+                            </div>
+        </div>
+    </footer>
+
+    <div class="pb-footer-toolbox">
+        <a href="javascript:;" class="top" data-uk-smooth-scroll="{offset:0}" data-uk-tooltip="{pos:'left'}" title="返回顶部">
+            <i class="uk-icon-arrow-up"></i>
+        </a>
+    </div>
+
+        <script src="static/js/basic.js"></script>
+
+    <script>
+        (function () {
+            var pager = new window.api.pager('.page-container',function (page) {
+                $.post('?',{page:page},function (res) {
+                    window.api.base.defaultFormCallback(res,{success:function(res){
+                        $('#list').html(res.data.html);
+                        pager.render(res.data.total,res.data.pageSize,res.data.page);
+                    }});
+                });
+            },{jump:false,total:false});
+            pager.render(7,20,1);
+        })();
+    </script>
+</body>
+</html>
 @stop

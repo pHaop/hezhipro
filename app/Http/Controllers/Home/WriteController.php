@@ -1,15 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Home;
-
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\user;
 use App\Model\Admin\Topic;
 use App\Model\Home\Article;
-use App\Model\Admin\Links;
-use App\Model\Home\Comments;
-use App\Model\Home\Reply;
 class WriteController extends Controller
 {
     /**
@@ -23,33 +20,11 @@ class WriteController extends Controller
         $rs = User::find(session('uid'));
         $rt = Topic::orderBy('addtime','desc')->get();
         $ra = Article::get();
-        $ren = Links::get();
         return view('home.aritle.write',['rt'=>$rt,
             'rs'=>$rs,
-            'ra'=>$ra,
-            'ren'=>$ren]);
+            'ra'=>$ra]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-   
-
-
-   
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
       
@@ -83,22 +58,18 @@ class WriteController extends Controller
      */
     public function sbkj($id)
     {
-        //
+        
         $rs = User::find(session('uid'));
-
         $res = Article::find($id);
+
         $rev = User::find($res['uid']);
-        $ren = Links::get();
-        $rem = Comments::get();
-        $count = Comments::count();
-        $reb = Reply::get();
+       
+        
+        $data = DB::table('like_write')->where('uid',$rs->id)->where('wid',$id)->first();
         return view('home.aritle.art',['rs'=>$rs,
             'rev'=>$rev,
-            'res'=>$res,
-            'ren'=>$ren,
-            'rem'=>$rem,
-            'count'=>$count,
-            'reb'=>$reb]);
+            'res'=>$res,'data'=>$data]);
+        
     }
 
     /**
