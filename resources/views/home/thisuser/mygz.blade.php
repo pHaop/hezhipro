@@ -25,7 +25,7 @@
                                     {{$rs->username}}
                                 </a>
                                                                                             </div>
-                            <div class="stat">
+                                <div class="stat">
                                 <a href="/member/101286/following">
                                     <span>{{$rs['data']}}</span>
                                     <br>
@@ -62,8 +62,7 @@
 
             @if($arr)
             @foreach($arr as $k=>$v)
-                
-
+            
             @php 
 
             $user = DB::table('user')->where('id',$v['id'])->first();
@@ -82,13 +81,13 @@
             </a>
             <span class="stat">
                 关注 0
+                
+            
                 ·
-                粉丝 7
-                ·
-                文章 142
+                文章 0
             </span>
             <div class="stat">
-                写了 118224 字
+                写了 0 字
             </div>
         </div>
 
@@ -158,22 +157,7 @@
     </div>
 
 
-    <footer>
-        <div class="main-container">
-            <div class="articles">
-                                    <a href="/article/1">使用协议</a>
-                                    <a href="/article/2">关于何止</a>
-                                    <a href="/article/4">版权说明</a>
-                                    <a href="/article/5">隐私保护</a>
-                                    <a href="/article/8">联系我们</a>
-                            </div>
-            <div class="copyright">
-                <a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备16023748号-8</a>
-                &copy;
-                heezhi.com【何止版权所有】
-                            </div>
-        </div>
-    </footer>
+
 
     <div class="pb-footer-toolbox">
         <a href="javascript:;" class="top" data-uk-smooth-scroll="{offset:0}" data-uk-tooltip="{pos:'left'}" title="返回顶部">

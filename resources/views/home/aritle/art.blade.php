@@ -5,7 +5,7 @@
         <div class="pb pb-note-view">
             <h1>{{$res['title']}}</h1>
             <div class="author-top">
-                <a class="avatar" href="/home/thisuser?id={{$rev->id}}">
+                <a class="avatar" href="/member/101250">
                     <img src="{{$rev['person']}}" />
                 </a>
                 <div class="user">
@@ -16,8 +16,9 @@
                 <div class="stat">
                     <time datetime="{{$res['addtime']}}"></time>发布
                     ·
-            
-                    阅读 20
+                    字数 0
+                    ·
+                    阅读 0
                     ·
                     评论 0
                     ·
@@ -31,32 +32,9 @@
                 <a href="javascript:;" data-dialog-request="/note/tip_off/6946">举报文章</a>
                 &copy;著作权归作者所有
             </div>
-            <div class="tip">
-                <div class="action">
-                    <a href="/login?redirect=%2Fn%2Fr8fp2rvl" data-uk-tooltip title="请先登录后再进行打赏">打赏</a>
-                </div>
-            </div>
-            <div class="author-bottom">
-                <a class="avatar" href="/member/101250">
-                    <img src="static/picture/35685_q70h_8626.jpg" />
-                </a>
-                <div class="user">
-                    <a class="name" href="/member/101250">
-                        一人一伴
-                    </a>
-                </div>
-                <div class="stat">
-                    写了 9142 字，被 0 人关注
-                </div>
-                <div class="signature">
-
-                </div>
-            </div>
-     
+          
             <div class="tool">
-                <div class="body">
-                    <div data-share-buttons data-sites="weibo,qq,qzone,wechat"></div>
-                </div>
+
                 <div style="display: none;" id="uid">{{$rs->id}}</div>
 
      
@@ -69,8 +47,6 @@
                     <i class="uk-icon-heart-o"></i> 喜欢 
                 </p>
                 @endif
-                
-            
                
             <div style="display: none;" id="wid">{{$res['id']}}</div>
 
@@ -140,30 +116,30 @@
                                 
             </style>
           
-
+            </div>
+            <div class="body">
+                <div data-share-buttons data-sites="weibo,qq,qzone,wechat"></div>
             </div>
         </div>
-
-        
-
-
-
-
-
-
-
-
-
-
 
         <div class="pb pb-note-comment-post">
             @if(session('uid'))
                 <div class="avatar">
-                    <img src="http://heezhi.c.ecuster.com/assets/lib/img/avatar.png?v=b7f617aa" />
+                    <p>发表评论&nbsp;:</p>
                 </div>
                 <div class="comment-editor">
                     <div class="message-editor">
-                        <textarea id="noteComment" style="display:none;"></textarea>
+                        <div class="text_editor_1" class="text-editor-container">
+                            <div class="text_editor-box">
+
+                                <div class="text=editor-field">
+                                     <textarea id="Con" style="width:500px;height:100px" uid="{{$rs['id']}}" aid="{{$res['id']}}"></textarea>
+                                </div>
+                                <div class="text-editor-button">
+                                    <button class="tet-editor-button-send" style="margin-left: 450px" id="send">发送</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @else
@@ -173,68 +149,84 @@
 
                 @endif
         </div>
-
         <div class="pb pb-note-comment-list">
             <div class="title">
-                0条评论
+               {{$count}}条评论
             </div>
             <div class="list">
-                <div class="loading">
-                    <i class="uk-icon-refresh uk-icon-spin"></i>
-                </div>
-            </div>
-            <div class="page page-container">
-            </div>
-        </div>
-
-    </div>
-
-    <div id="tipDialog" class="uk-modal">
-        <div class="uk-modal-dialog">
-            <div class="pb pb-note-tip">
-                <div class="body">
-                    <div class="uk-form">
-                        <div class="tip-title">
-                            打赏给用户
+                @foreach($rem as $k=>$v)
+                <div class="item" >
+                    <div class="user">
+                        <a class="avatar" href=""><img src=""></a>
+                        <a class="name" href="">111</a>
+                        <div class="time">
+                            {{$v['addtime']}}
                         </div>
-                        <div class="tip-value">
-                            <input type="text" class="uk-form-large" name="money" value="" />
-                        </div>
-
-                        <div class="pay-list">
-
-                            <a href="javascript:;" data-type="alipay">
-                                <img src="static/picture/alipay.jpg"/>
-                                支付宝
-                            </a>
-
-                            <a href="javascript:;" data-type="wechat">
-                                <img src="static/picture/wechat.jpg"/>
-                                微信支付
-                            </a>
-
-                        </div>
-
-                        <div class="msg-title">
-                            留言
-                        </div>
-                        <div class="msg-value">
-                            <input type="text" class="uk-form-large" name="msg" value="支持一下~" />
-                        </div>
-
-                        <div class="pay-submit">
-                            <a href="javascript:;" data-pay-submit>确定支付</a>
-                        </div>
-
                     </div>
                 </div>
+                <div class="message">
+                    <p>{{$v['comment']}}</p>
+                </div>
+                <div class="start">
+                    <a class="like" href="">点赞</a>
+                    <span class="reply" id="rep">回复</span>
+                </div>
+                <div class="reply">
+                    <div class="reply-list" style="margin-left: 30px;">
+                        @foreach($reb as $k=>$v)
+                        <div class="reply-item" style="margin-left: 20px;">
+                            <div class="reply-text">
+                                <div class="reply-user">
+                                    <a href="">名字 :</a>
+                                </div>
+                            <p>{{$v['reply']}}</p>
+                            </div>
+                            <div class="reply-stat">
+                                <span class="reply-time">{{$v['addtime']}}</span>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="reply-editor">
+                        <textarea style="display: none" id="textrep" style="width: 400px"
+                                  uid="{{$rs['id']}}" aid="{{$res['id']}}"></textarea>
+                    </div>
+                    <div class="text-editor-button">
+                        <button class="tet-editor-button-send" style="display: none" id="reply">回复</button>
+                    </div>
+                </div>
+                    @endforeach
             </div>
+
         </div>
-    </div>
 
-
-
-
-
-
-    @stop
+        <script>
+        $("#send").click(function(){
+            var comment =$('#Con').val();
+            var uid = $('#Con').attr('uid');
+            var aid = $('#Con').attr('aid');
+            $.post("/home/comment",{'_token':"{{csrf_token()}}",'aid':aid,'uid':uid,'comment':comment},function(res){
+                if(res == 1){
+                    alert('评论成功');
+                    $('#Con').val() == '';
+                }
+            });
+        })
+        $("#rep").click(function(){
+            $('#textrep').attr('style','display: block;width: 500px;');
+            $('#reply').attr('style','display:block;margin-left:450px;');
+            var reply =$('#textrep').val();
+            var uid = $('#textrep').attr('uid');
+            var aid = $('#textrep').attr('aid');
+            $('#reply').click(function(){
+                $.post("/home/reply",{'_token':"{{csrf_token()}}",'aid':aid,'uid':uid,'reply':reply},function(res){
+                    if(res == 1){
+                        alert('回复成功');
+                        $('#textrep').attr('style','display:none');
+                        $('#reply').attr('style','display:none');
+                    }
+                });
+            })
+        })
+    </script>
+@stop

@@ -41,6 +41,7 @@ class LikewriteController extends Controller
 
      public function likenote(Request $request)
      {
+        
 
         $id = $request->id;
 

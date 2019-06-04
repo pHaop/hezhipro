@@ -21,6 +21,8 @@
 
 Route::group([],function(){
 	
+
+	
     Route::resource('/home/aritle/', 'Home\WriteController');
     Route::get('/home/aritle/{id}','Home\WriteController@sbkj');
     Route::post('/home/aritle/ajax','Home\WriteajaxController@req');
@@ -29,6 +31,11 @@ Route::group([],function(){
     Route::get('/home/topic/{id}','Home\TopicController@sbkj');
     Route::get('/home/follow','Home\FollowController@index');
     Route::get('/logout','Home\LoginController@logout');
+    Route::post('/home/comment','Home\CommentController@index');
+    Route::post('/home/reply','Home\ReplyController@index');
+  	
+
+
 
 });
 
@@ -146,8 +153,8 @@ Route::group(['middleware'=>'login'], function(){
     Route::post('/admin/doroleperm', 'Admin\RoleController@doroleperm');
     //轮播图管理
    	Route::resource('/admin/cart','Admin\CartController');
-   	//友情链接管理
-   	Route::resource('/admin/friend','Admin\FriendController');
+   //友情链接管理
+    Route::resource('/admin/links','Admin\LinksController');
    	//专题管理
    	Route::resource('/admin/topic','Admin\TopicController');
 
@@ -162,7 +169,7 @@ Route::group(['middleware'=>'login'], function(){
 
 
 	//前台首页
-	Route::get('/', 'Home\IndexController@index');
+	Route::any('/', 'Home\IndexController@index');
 	//前台登录
 	Route::get('/home/login', 'Home\LoginController@index');
 	//处理登录信息

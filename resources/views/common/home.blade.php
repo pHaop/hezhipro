@@ -1,4 +1,3 @@
- 
 <!doctype html>
 <html class="no-js">
 <head>
@@ -12,6 +11,8 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <script src="/homes/static/js/init.js"></script>
     <script src="/js/jquery.js"></script>
+    <script src="/homes/static/js/home.js"></script>
+    <link rel="stylesheet" href="/css/app.css">
     <title>何止 - 让文学回归阅读的本味!</title>
             <link rel="stylesheet" href="/homes/static/css/ui.css"/>
         <link rel="stylesheet" href="/homes/static/css/style.css"/>
@@ -37,6 +38,7 @@ var _hmt = _hmt || [];
 
 
     @php
+
     $data = DB::table('user')->where('id',session('uid'))->first()
    
     @endphp
@@ -86,8 +88,9 @@ var _hmt = _hmt || [];
             <li ><a href="/home/aritle">写作模式</a></li>
         @endif
         <li>
-            <form action="/search" class="search uk-form" method="get">
-                <input type="text" name="keyword" value="" placeholder="搜索 文章/专题/用户" />
+            <form action="/" class="search uk-form" method="post">
+                <input type="text" name="title" value="" placeholder="搜索 文章/专题/用户" />
+                {{csrf_field()}}
                 <button type="submit"><i class="uk-icon-search"></i></button>
             </form>
         </li>
@@ -101,3 +104,35 @@ var _hmt = _hmt || [];
 
 
 @show
+<footer>
+
+
+    @php 
+    
+    $ren = DB::table('links')->get();
+
+    @endphp
+
+    <div class="main-container">
+            <h4>合作伙伴</h4>
+        <div class="articles">
+            @foreach($ren as $k=>$v)
+            <a href="http://{{$v->url}}">{{$v->urlname}}</a>
+        
+                @endforeach
+        </div>
+        <hr >
+        <div class="articles">
+            <a href="/article/1">使用协议</a>
+            <a href="/article/2">关于何止</a>
+            <a href="/article/4">版权说明</a>
+            <a href="/article/5">隐私保护</a>
+            <a href="/article/8">联系我们</a>
+        </div>
+        <div class="copyright">
+            <a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备16023748号-8</a>
+            &copy;
+            heezhi.com【何止版权所有】
+        </div>
+    </div>
+</footer>

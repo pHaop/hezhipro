@@ -27,22 +27,6 @@
 </style>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
      <div class="swiper-pagination swiper-pagination-white"></div> 
      <div class="swiper-button-next swiper-button-white"></div> 
      <div class="swiper-button-prev swiper-button-white"></div> 
@@ -117,54 +101,7 @@
             </div>
                     </div>
                                     @endforeach
-            <div class="item">
-            <div class="author">
-                <a href="/member/100132" class="avatar">
-                    <img src="/homes/static/picture/31731_vxx2_4528.jpg" />
-                </a>
-                <a class="name" href="/member/100132">
-                    大脸猫
-                </a>
-                <span class="time">
-                    <time datetime="2018-07-09 09:57:22"></time>
-                </span>
-            </div>
-                            <div class="cover">
-                    <a href="/n/zefmkeyk" data-src="http://heezhi.c.ecuster.com/data/image/2018/07/09/6973_jffw_9987.png?v=b380802e">
-                    </a>
-                </div>
-                        <a href="/n/zefmkeyk" class="title uk-text-truncate">
-                什么样的朋友，是真正的朋友？
-            </a>
-            <div class="summary">
-                <div class="text">
-
-
-                    友情有多动人？
-                    
-                    &nbsp;
-                    
-                    世界杯赛场上，克罗地亚门将苏巴西奇在全世界面前，给出了最温暖的答案。
-                    
-                    &nbsp;
-                    
-                    7月1日，世界杯1/8决赛，克罗地亚在点球大战中淘汰丹麦，成功晋级。大功臣苏巴西奇在欢呼奔跑中脱下队服，露出贴...
-                </div>
-            </div>
-            <div class="stat">
-                <a href="/n/zefmkeyk">
-                    <i class="uk-icon-eye"></i> 1198
-                </a>
-                &nbsp;&nbsp;
-                <a href="/n/zefmkeyk">
-                    <i class="uk-icon-heart"></i> 11
-                </a>
-                &nbsp;&nbsp;
-                <a href="/n/zefmkeyk">
-                    <i class="uk-icon-comment"></i> 1
-                </a>
-            </div>
-                    </div>
+            
             <div class="item">
             <div class="author">
                 <a href="/member/100002" class="avatar">
@@ -357,20 +294,7 @@
     </div> 
    </div> 
   </div> 
-  <footer> 
-   <div class="main-container"> 
-    <div class="articles"> 
-     <a href="/article/1">使用协议</a> 
-     <a href="/article/2">关于何止</a> 
-     <a href="/article/4">版权说明</a> 
-     <a href="/article/5">隐私保护</a> 
-     <a href="/article/8">联系我们</a> 
-    </div> 
-    <div class="copyright"> 
-     <a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备16023748号-8</a> &copy; heezhi.com【何止版权所有】 
-    </div> 
-   </div> 
-  </footer> 
+ 
   <div class="pb-footer-toolbox"> 
    <a href="javascript:;" class="top" data-uk-smooth-scroll="{offset:0}" data-uk-tooltip="{pos:'left'}" title="返回顶部"> <i class="uk-icon-arrow-up"></i> </a> 
   </div>  

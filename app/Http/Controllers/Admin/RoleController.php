@@ -11,11 +11,14 @@ use App\Model\Admin\Perm;
 
 class RoleController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function index(Request $request)
     {
         $rs = Role::all();
@@ -131,6 +134,8 @@ class RoleController extends Controller
     public function roleperm(Request $request)
     {
 
+
+        
         $rid = $request->id;
     
         $rs = Perm::all();

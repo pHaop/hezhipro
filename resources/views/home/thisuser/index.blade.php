@@ -40,16 +40,12 @@
                                     文章
                                 </a>
 
-                                
-                                <div style="display: none;" id="tid">{{$id}}</div>
-                                  @if(in_array($id,$ids))
-                                  <a href="javascript:;" class="unfollow show" target='_blank'><i class="uk-icon-plus"></i>取消关注</a> 
-                                  @else
-                                  <a href="javascript:;" class="follow show" target='_blank'><i class="uk-icon-plus"></i>关注</a> 
-                                  @endif
-                                  <div style="display: none;" id="uid">{{session('uid')}}</div>
-                                                           
+                                 
+                                         
+
+                                                 
                             </div>
+
                               
 
                         </div>
@@ -58,7 +54,13 @@
 
                 </div>
 
-
+    <div style="display: none;" id="tid">{{$id}}</div>
+                                  @if(in_array($id,$ids))
+                                  <a href="javascript:;" class="unfollow show" target='_blank'><i class="uk-icon-plus"></i>取消关注</a> 
+                                  @else
+                                  <a href="javascript:;" class="follow show" target='_blank'><i class="uk-icon-plus"></i>关注</a> 
+                                  @endif
+                                  <div style="display: none;" id="uid">{{session('uid')}}</div>
 
    
             <script type="text/javascript" src="/js/jquery.js"></script>
@@ -148,7 +150,7 @@
             </div>
             <div class="stat">
                 <a href="/n/gqyjswzf">
-                    <i class="uk-icon-eye"></i> 31
+                    <i class="uk-icon-eye"></i> 1
                 </a>
                 &nbsp;&nbsp;
                 <a href="/n/gqyjswzf">
@@ -156,7 +158,7 @@
                 </a>
                 &nbsp;&nbsp;
                 <a href="/n/gqyjswzf">
-                    <i class="uk-icon-comment"></i> 0
+                    <i class="uk-icon-comment"></i> 1
                 </a>
             </div>
       </div>
@@ -219,23 +221,6 @@
 
     </div>
 
-
-    <footer>
-        <div class="main-container">
-            <div class="articles">
-                                    <a href="/homes//article/1">使用协议</a>
-                                    <a href="/homes//article/2">关于何止</a>
-                                    <a href="/homes//article/4">版权说明</a>
-                                    <a href="/homes//article/5">隐私保护</a>
-                                    <a href="/homes//article/8">联系我们</a>
-                            </div>
-            <div class="copyright">
-                <a href="/homes/http://www.miitbeian.gov.cn" target="_blank">沪ICP备16023748号-8</a>
-                &copy;
-                heezhi.com【何止版权所有】
-                            </div>
-        </div>
-    </footer>
 
     <div class="pb-footer-toolbox">
         <a href="/homes/javascript:;" class="top" data-uk-smooth-scroll="{offset:0}" data-uk-tooltip="{pos:'left'}" title="返回顶部">

@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Model\Home\User;
+use App\Model\Home\Article;
 use DB;
 use Session;
+
 class Usercontroller extends Controller
 {
 
@@ -21,8 +23,9 @@ class Usercontroller extends Controller
       
       $rs['data']=$data;
 
+      $res = Article::where('uid',session('uid'))->orderBy('addtime','desc')->get();
 
-    	return view('home.user.index',['rs'=>$rs,"data"=>$data]);
+    	return view('home.user.index',['rs'=>$rs,"data"=>$data,'res'=>$res]);
 
 
       

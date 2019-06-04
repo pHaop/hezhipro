@@ -181,6 +181,31 @@
                     </li >
                 </ul>
             </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe725;</i>
+                    <cite>友情链接管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="/admin/links">
+                            <i class="iconfont">&#xe6a6;</i>
+                            <cite>友情链接列表</cite>
+                        </a>
+                    </li >
+                </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="/admin/links/create">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加友情链接</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+
+
                     
            
         </ul>

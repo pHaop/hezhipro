@@ -140,13 +140,55 @@ var _hmt = _hmt || [];
         </div>
     </div>
 
+
     <div class="pb pb-note-list">
         <div class="body" id="list">
+
+
+
+@foreach($res as $va)
+  <div class="item">
+            <div class="author">
+                <a href="/member/101170" class="avatar">
+                    <img src="{{$rs->person}}">
+                </a>
+                <a class="name" href="/member/101170">
+                    {{$rs->username}}
+                </a>
+                <span class="time">
+                    <time datetime="{{$va['addtime']}}"></time>
+                </span>
+            </div>
+                            
+            <a href="/home/aritle/{{$va['id']}}" class="title uk-text-truncate">
+                {{$va['title']}}
+            </a>
+            <div class="summary">
+                <div class="text">
+                     @php echo  htmlspecialchars_decode($va['content']);@endphp
+                </div>
+            </div>
+            <div class="stat">
+                <a href="/n/gqyjswzf">
+                    <i class="uk-icon-eye"></i> 31
+                </a>
+                &nbsp;&nbsp;
+                <a href="/n/gqyjswzf">
+                    <i class="uk-icon-heart"></i> 1
+                </a>
+                &nbsp;&nbsp;
+                <a href="/n/gqyjswzf">
+                    <i class="uk-icon-comment"></i> 0
+                </a>
+            </div>
+      </div>
+@endforeach
             <div class="empty">
         没有记录
     </div>
         </div>
     </div>
+
 
     <div class="pb">
         <div class="page-container"></div>

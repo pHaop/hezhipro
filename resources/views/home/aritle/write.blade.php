@@ -36,7 +36,7 @@
       <button type="submit" class="btn btn-default" style="margin-left: 650px" id="bbb">保存发布</button>
 
 
-    <select class="form-control" style="width: 400px" name="name" autocomplete="off">
+    <select class="form-control" style="width: 300px" name="name" autocomplete="off">
 
         @foreach($rt as $k=>$v)
     <option value="{{$v['id']}}" >{{$v['name']}}</option>
@@ -49,27 +49,28 @@
                 <input type="hidden" name="uid" value="{{$rs['id']}}">
   <div class="form-group">
     <label for="exampleInputPassword1">文章标题</label>
-    <input type="text" class="form-control" placeholder="文章标题" style="width:1100px" name="title" value="" id="ccc">
+    <input type="text" class="form-control" placeholder="文章标题" style="width:500px" name="title" value="" id="ccc">
   </div>
   
   <div class="checkbox">
      <label for="exampleInputPassword1">文章内容</label>
-        <script type="text/javascript" src="{{asset('bj/ueditor.config.js')}}">
+        <script type="text/javascript" src="{{asset('bja/ueditor.config.js')}}">
 
       </script>
 <!-- 编辑器源码文件 -->
-<script type="text/javascript" src="{{asset('bj/ueditor.all.js')}}"></script>
+<script type="text/javascript" src="{{asset('bja/ueditor.all.js')}}"></script>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     var ue = UE.getEditor('ue-container');
     ue.ready(function(){
         ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
     });
+    
 </script>    
 
 <!-- 加载编辑器的容器 -->
 
-<script id="ue-container" name="content"  type="text/plain">
+<script id="ue-container" name="content"  type="text/plain" >
 
 </script>
 

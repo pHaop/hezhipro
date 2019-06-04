@@ -17,14 +17,14 @@ use App\Model\Admin\Topic;
 class IndexController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
 
-
+        $content = $request->title;
 
         $rus = User::find(session('uid'));
 
-        $res = Article::orderBy('addtime','desc')->get();
+        $res = Article::where('title','like','%'.$content.'%')->orderBy('addtime','desc')->get();
         
         $rep = Topic::get();
 
@@ -34,14 +34,7 @@ class IndexController extends Controller
             
             $rev = User::find($v['uid']); 
       
-        }
-     
-
-
-        
-       
-       
-           
+        } 
 
     	$rs = Cart::orderBy('grouy','ASC')->get();
 

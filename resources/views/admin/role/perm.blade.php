@@ -42,23 +42,35 @@
                         拥有权限
                     </label>
                     <table  class="layui-table layui-input-block">
-                        <tbody>
-                            <tr>                              
-                                <td>                             
-                            @foreach($rs as $k=>$v)
 
+
+
+                        <tbody>
+                            <tr>     
+                                  
+
+                                                       
+                                                             
+                                     @foreach($rs as $k=>$v)   
+                                     <td>       
                                     <div class="layui-input-block">
                                         @if(in_array($v->id,$urr))
                                         <input name="id[]" type="checkbox" value="{{$v->id}}" checked>  {{$v->permname}} 
                                         @else
-                                         <input name="id[]" type="checkbox" value="{{$v->id}}">  {{$v->permname}} 
+                                         <input name="id[]" type="checkbox" value="{{$v->id}}">  
+                                         {{$v->permname}} 
                                         @endif
-
-
                                     </div>
-                             @endforeach
-                                </td>   
-                            
+                                    </td>
+                                    @if(($k+1) % 5 == 0)
+                                        <tr></tr>
+                                    @endif
+                                      @endforeach
+
+                                   
+                             
+                       
+                                      
 
                                
                                
