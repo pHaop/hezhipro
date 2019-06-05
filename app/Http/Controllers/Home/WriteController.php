@@ -65,9 +65,6 @@ class WriteController extends Controller
      */
     public function sbkj($id)
     {
-
-
-
         
         $rs = User::find(session('uid'));
         $res = Article::find($id);

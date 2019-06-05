@@ -1,8 +1,5 @@
 @extends('common/admin')
 
-
-
-
 @section('content')
 <!DOCTYPE html>
 <html>
@@ -32,6 +29,7 @@
                     <label for="name" class="layui-form-label">
                         <span class="x-red">*</span>用户名
                     </label>
+
                     <div class="layui-input-inline">
                         <input type="text" id="name" name="name" required="" lay-verify="required"
                         autocomplete="off" class="layui-input" value="{{$data->username}}">

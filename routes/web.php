@@ -24,7 +24,7 @@ Route::group([],function(){
 
 	
     Route::resource('/home/aritle/', 'Home\WriteController');
-    Route::get('/home/aritle/{id}','Home\WriteController@sbkj');
+   
     Route::post('/home/aritle/ajax','Home\WriteajaxController@req');
     Route::post('/home/aritle/ajaxxg','Home\WriteajaxController@rel');
     Route::resource('/home/topic/','Home\TopicController');
@@ -188,7 +188,6 @@ Route::group(['middleware'=>'login'], function(){
 
 	//前台路由组
 Route::group(['middleware'=>'Home'],function(){
-
 	//退出
 	Route::get('/home/loginout','Home\LoginController@loginout');
 	//个人中心
@@ -213,6 +212,8 @@ Route::group(['middleware'=>'Home'],function(){
 	Route::get('/home/nolike','Home\LikewriteController@nolike');
 	//用户喜欢页面
 	Route::get('/home/likenote','Home\LikewriteController@likenote');
+	//文章
+	Route::get('/home/aritle/{id}','Home\WriteController@sbkj');
 
 
 });

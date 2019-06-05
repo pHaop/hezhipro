@@ -25,7 +25,7 @@ class FollowController extends Controller
 	            $arr[]=$data;
 	        }   
 
-	      dump($arr);
+	  
 
         return view('home.follow',['rs'=>$rs,'arr'=>$arr]);
     }
